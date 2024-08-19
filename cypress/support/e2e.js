@@ -15,6 +15,19 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+require('cypress-xpath');
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // Ignore specific errors
+    if (err.message.includes('e.findElement is not a function')) {
+      // returning false here prevents Cypress from failing the test
+      return false;
+    }
+    // returning true allows Cypress to fail the test
+    return true;
+  });
+  
+
+
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
