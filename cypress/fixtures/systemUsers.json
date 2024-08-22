@@ -1,0 +1,7 @@
+{
+    "validUser": {
+    },
+    "invalidUser": {
+      "username": "Mahmoud"
+    }
+  }

@@ -68,7 +68,7 @@ describe('Dashboard Page Tests', () => {
     dashboardPage.checkCandidateToInterview();
     dashboardPage.clickCandidateToInterview();
   });
-  it('Employees on Leave Button ', ()=> {
+  it('Click on Employees on Leave settings button ', ()=> {
     dashboardPage.clickEmployeesOnLeaveButton();
   })
   it('Click on assign leave button' , ()=>{
