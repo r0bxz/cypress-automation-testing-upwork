@@ -58,7 +58,7 @@ deleteUser(validUser){
     this.deleteButton().click();
 })
 if(validUser.userName=="Admin")
-cy.get('[id="oxd-toaster_1"]').should('be.visible');
+cy.get('[id="oxd-toaster_1"]').should('be.visible'); // because we can't delete the admin, so a toaster will appear
 else {
 cy.contains('button','Yes, Delete').click();
 cy.contains('.oxd-table-row', validUser.userName).should('not.exist');}
@@ -71,7 +71,11 @@ editUser(validUser){
 cy.get('input.oxd-input--active').eq(1).type('newusernameisgenerated123');
 cy.get('button[type="submit"]').click();
 }
-
+searchByUsernameAndRole(username, role) {
+  this.enterUsername(username);
+  this.selectUserRole(role);
+  this.clickSearch();
+}
 hideOptionsButton(){
   this.hideButton().click();
   cy.contains('label', 'Username').should('not.be.visible')

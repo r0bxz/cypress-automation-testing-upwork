@@ -67,6 +67,12 @@ describe('Dashboard Page Tests', () => {
      systemUsersPage.editUser(validUser);
      cy.contains('Success').should('be.visible');
     })
+    it.only('should search for a user by username and role and verify details', () => {
+      systemUsersPage.searchByUsernameAndRole(validUser.userName, validUser.userRole.name);
+      cy.wait(1000);
+      systemUsersPage.verifyUserInTable(validUser.userName);
+      systemUsersPage.verifyUserInTable(validUser.userRole.name);
+    });
     it('should hide and show options', ()=>{
    systemUsersPage.hideOptionsButton();
     })
