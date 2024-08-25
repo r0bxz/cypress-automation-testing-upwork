@@ -35,7 +35,7 @@ describe('Job Categories Page Tests', () => {
 
   it('should edit an existing job category and verify changes', () => {
 
-    // Assuming `randomCategoryName` is already present in the table
+
     jobCategoriesPage.clickEdit(randomCategoryName);
     jobCategoriesPage.enterJobCategoryName(anotherRandomCategoryName);
     jobCategoriesPage.clickSave();
