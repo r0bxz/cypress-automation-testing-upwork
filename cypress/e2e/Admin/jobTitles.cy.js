@@ -1,11 +1,14 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import jobTitlesPage from '../pages/jobTitlesPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import jobTitlesPage from '../../pages/Admin/jobTitlesPage';
 import 'cypress-file-upload';
 
 
 describe('Job Titles Page Tests', () => {
   let validJobTitle;
+  let number = Math.floor(Math.random() * 100);
+  let jobTitle = `Job title ${number}`;
+  let editedJobTitle=`Edited title${number}`; ;
   
   before(() => {
     cy.visit('https://opensource-demo.orangehrmlive.com/');
@@ -32,22 +35,22 @@ describe('Job Titles Page Tests', () => {
 
   it('should add a new job title and verify in the list', () => {
     jobTitlesPage.clickAdd();
-    jobTitlesPage.enterJobTitle('New Job Title');
+    jobTitlesPage.enterJobTitle(jobTitle);
     jobTitlesPage.enterJobDescription('This is a test job description.');
     jobTitlesPage.fileUploadButton().click();
     cy.get('input[type="file"]').attachFile('test-file.txt'); 
     jobTitlesPage.clickSave();
     cy.wait(1000);
-    jobTitlesPage.verifyJobTitleInTable('New Job Title');
+    jobTitlesPage.verifyJobTitleInTable(jobTitle);
   });
 
   it('should edit an existing job title', () => {
-    jobTitlesPage.editJobTitle(validJobTitle.title, 'Edited Job Title');
+    jobTitlesPage.editJobTitle(validJobTitle.title, editedJobTitle);
     cy.contains('Success').should('be.visible');
-    jobTitlesPage.verifyJobTitleInTable('Edited Job Title');
+    jobTitlesPage.verifyJobTitleInTable(editedJobTitle);
   });
 
   it('should delete a job title and verify it is removed', () => {
-    jobTitlesPage.deleteJobTitle(validJobTitle.title);
+    jobTitlesPage.deleteJobTitle(jobTitle);
   });
 });

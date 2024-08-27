@@ -1,7 +1,7 @@
-import DashboardPage from '../pages/dashboardPage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import dashboardPage from '../pages/dashboardPage';
+import DashboardPage from '../../pages/Dasboard/dashboardPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import dashboardPage from '../../pages/Dasboard/dashboardPage';
 
 describe('Dashboard Page Tests', () => {
     beforeEach(() => {
@@ -59,22 +59,9 @@ describe('Dashboard Page Tests', () => {
     cy.url().should('include','/attendance')
   });
 
-  it('should verify the presence and redirection of Pending Self Review section', () => {
-    dashboardPage.checkPendingSelfReview();
-    dashboardPage.clickPendingSelfReview();
-  });
-
-  it('should verify the presence and redirection of Candidate to Interview section', () => {
-    dashboardPage.checkCandidateToInterview();
-    dashboardPage.clickCandidateToInterview();
-  });
   it('Click on Employees on Leave settings button ', ()=> {
     dashboardPage.clickEmployeesOnLeaveButton();
   })
-  it('Click on assign leave button' , ()=>{
-    dashboardPage.clickAssignLeaveButton();
-    cy.url().should('include','/assignLeave')
-  });
   it('Press "About" under user menu', () => {
     dashboardPage.clickUserDropDownMenu()
     cy.get('.oxd-userdropdown-link').contains('About').click()

@@ -1,6 +1,6 @@
-import languagesPage from '../pages/languagesPage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
+import languagesPage from '../../pages/Admin/languagesPage';
+import loginPage from '../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
 
 describe('Languages Page Tests', () => {
   const newLanguageName = `Language ${Math.floor(Math.random() * 1000)}`;

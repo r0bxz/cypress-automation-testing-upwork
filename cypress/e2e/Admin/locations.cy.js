@@ -1,6 +1,6 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import locationsPage from '../pages/locationsPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import locationsPage from '../../pages/Admin/locationsPage';
 
 describe('Locations Page Search Functionality', () => {
     let randomLocationNamE ;

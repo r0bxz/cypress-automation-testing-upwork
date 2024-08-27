@@ -1,6 +1,6 @@
-import membershipsPage from '../pages/membershipsPage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
+import membershipsPage from '../../pages/Admin/membershipsPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
 
 describe('Memberships Page Tests', () => {
   const newMembershipName = `Membership ${Math.floor(Math.random() * 1000)}`;

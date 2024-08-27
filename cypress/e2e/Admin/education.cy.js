@@ -1,6 +1,6 @@
-import educationPage from '../pages/educationPage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
+import educationPage from '../../pages/Admin/educationPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
 
 describe('Education Page Tests', () => {
   const newEducationLevel = `Education ${Math.floor(Math.random() * 1000)}`;

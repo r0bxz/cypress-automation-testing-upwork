@@ -1,6 +1,6 @@
-import organizationStructurePage from '../pages/structurePage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
+import organizationStructurePage from '../../pages/Admin/structurePage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
 
 describe('Organization Structure Tests', () => {
   const newUnitName = `Unit ${Math.floor(Math.random() * 1000)}`;

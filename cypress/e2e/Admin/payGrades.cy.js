@@ -1,6 +1,6 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import payGradesPage from '../pages/payGradesPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import payGradesPage from '../../pages/Admin/payGradesPage';
 
 
 describe('Pay Grades Page Tests', () => {
@@ -57,7 +57,7 @@ describe('Pay Grades Page Tests', () => {
     payGradesPage.verifyCurrencyInTable('Euro');
   });
 
-  it.only('should delete a pay grade and verify it is removed', () => {
+  it('should delete a pay grade and verify it is removed', () => {
     payGradesPage.deleteGrade(validGrade.name);
     cy.contains(validGrade.name).should('not.exist');
   });

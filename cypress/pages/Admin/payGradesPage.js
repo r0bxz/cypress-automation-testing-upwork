@@ -33,7 +33,7 @@ class PayGradesPage {
     .should('be.visible', { timeout: 10000 })
     .contains(currency)
     .scrollIntoView()
-    .click({ force: true });
+    .click();
     }
 
   enterMinSalary(minSalary) {

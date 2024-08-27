@@ -1,7 +1,7 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import systemUsersPage from '../pages/systemUsersPage';
-import systemUsers from '../fixtures/systemUsers.json';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import systemUsersPage from '../../pages/Admin/systemUsersPage';
+import systemUsers from '../../fixtures/systemUsers.json';
 
 describe('Dashboard Page Tests', () => {
   let validUser;
@@ -37,13 +37,13 @@ describe('Dashboard Page Tests', () => {
     });
 
     it('should search for a user by employee name and verify details', () => {
-        if(validUser.employee.middleName != " ")
-        systemUsersPage.enterEmployeeName(validUser.employee.firstName+  " " + validUser.employee.middleName+ " " + validUser.employee.lastName);
+        if(validUser.employee.middleName != "")
+        systemUsersPage.enterEmployeeName(validUser.employee.firstName+" "+ validUser.employee.middleName+" "+ validUser.employee.lastName);
         else 
-        systemUsersPage.enterEmployeeName(validUser.employee.firstName+ " " + validUser.employee.lastName);
+        systemUsersPage.enterEmployeeName(validUser.employee.firstName+" "+ validUser.employee.lastName);
         systemUsersPage.clickSearch();
         cy.wait(1000);
-        systemUsersPage.verifyEmployeeNameInTable(validUser.employee.firstName + " " + validUser.employee.lastName)
+        systemUsersPage.verifyEmployeeNameInTable(validUser.employee.firstName +" "+ validUser.employee.lastName)
     });
 
     it('should search for users by role and verify results', () => {

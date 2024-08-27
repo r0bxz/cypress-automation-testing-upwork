@@ -1,6 +1,6 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import generalInformationPage from '../pages/generalInformationPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import generalInformationPage from '../../pages/Admin/generalInformationPage';
 
 describe('General Information Page Tests', () => {
   before(() => {

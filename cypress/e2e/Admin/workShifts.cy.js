@@ -1,6 +1,6 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import workShiftsPage from '../pages/workShiftsPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import workShiftsPage from '../../pages/Admin/workShiftsPage';
 
 describe('Work Shifts Page Tests', () => {
   let randomShiftName;

@@ -1,6 +1,6 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import employmentStatusPage from '../pages/EmploymentStatusPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import employmentStatusPage from '../../pages/Admin/employmentStatusPage';
 
 describe('Employment Status Page Tests', () => {
   let randomStatusName;

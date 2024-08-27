@@ -1,6 +1,6 @@
-import skillsPage from '../pages/skillsPage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
+import skillsPage from '../../pages/Admin/skillsPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
 
 describe('Skills Page Tests', () => {
   const newSkillName = `Skill ${Math.floor(Math.random() * 1000)}`;

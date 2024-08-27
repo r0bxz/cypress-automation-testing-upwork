@@ -1,6 +1,6 @@
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
-import jobCategoriesPage from '../pages/jobCategoriesPage';
+import loginPage from '../../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import jobCategoriesPage from '../../pages/Admin/jobCategoriesPage';
 
 describe('Job Categories Page Tests', () => {
   let randomCategoryName;

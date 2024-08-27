@@ -24,7 +24,8 @@ class systemUsersPage {
   enterEmployeeName(employeeName) {
       this.employeeNameField().clear().type(employeeName);
       cy.get('div.oxd-autocomplete-option')
-    .contains('span', employeeName)
+      cy.wait(1000)
+      cy.contains('div.oxd-autocomplete-option', employeeName)
     .click();
   }
 
@@ -57,7 +58,7 @@ deleteUser(validUser){
   cy.contains('.oxd-table-row', validUser.userName).within(() => {
     this.deleteButton().click();
 })
-if(validUser.userName=="Admin")
+if(validUser.userRole.name=="Admin")
 cy.get('[id="oxd-toaster_1"]').should('be.visible'); // because we can't delete the admin, so a toaster will appear
 else {
 cy.contains('button','Yes, Delete').click();
@@ -68,7 +69,7 @@ editUser(validUser){
   cy.contains('.oxd-table-row', validUser.userName).within(() => {
     this.editButton().click();
 })
-cy.get('input.oxd-input--active').eq(1).type('newusernameisgenerated123');
+cy.get('input.oxd-input--active').eq(1).clear().type('newusernameisgenerated123');
 cy.get('button[type="submit"]').click();
 }
 searchByUsernameAndRole(username, role) {

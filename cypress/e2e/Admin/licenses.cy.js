@@ -1,6 +1,6 @@
-import licensesPage from '../pages/licensesPage';
-import loginPage from '../pages/loginPage';
-import loginData from '../fixtures/loginData.json';
+import licensesPage from '../../pages/Admin/licensesPage';
+import loginPage from '../pages/Login/loginPage';
+import loginData from '../../fixtures/loginData.json';
 
 describe('Licenses Page Tests', () => {
   const newLicenseName = `License ${Math.floor(Math.random() * 1000)}`;
