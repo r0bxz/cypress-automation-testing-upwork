@@ -3,13 +3,6 @@ import loginPage from '../../pages/Login/loginPage';
 import loginData from '../../fixtures/loginData.json';
 
 describe('Email Configuration Page Tests', () => {
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-  });
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
