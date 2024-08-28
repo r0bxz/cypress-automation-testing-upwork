@@ -8,7 +8,7 @@ describe('Job Titles Page Tests', () => {
   let validJobTitle;
   let number = Math.floor(Math.random() * 100);
   let jobTitle = `Job title ${number}`;
-  let editedJobTitle=`Edited title${number}`; ;
+  let editedJobTitle=`Edited title${number}`; 
   
   before(() => {
     cy.visit('https://opensource-demo.orangehrmlive.com/');
