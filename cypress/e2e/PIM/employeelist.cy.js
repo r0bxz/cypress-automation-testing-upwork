@@ -30,7 +30,7 @@ describe('Employee Information Page Tests', () => {
   });
 
   it('should search for an employee by name and verify details', () => {
-    employeeInformationPage.enterEmployeeName(validEmployee.firstName + ' ' + validEmployee.lastName);
+    employeeInformationPage.enterEmployeeName(validEmployee.lastName);
     employeeInformationPage.clickSearch();
     cy.wait(1000);
     employeeInformationPage.verifyEmployeeInTable(validEmployee.lastName);
@@ -51,7 +51,7 @@ describe('Employee Information Page Tests', () => {
 
   it('should allow editing the employee information', () => {
     employeeInformationPage.editEmployee(validEmployee.lastName);
-    employeeInformationPage.clickSave();
+    employeeInformationPage.clickSave()
     cy.contains('Success').should('be.visible');
   });
 
