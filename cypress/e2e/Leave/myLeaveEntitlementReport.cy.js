@@ -14,7 +14,7 @@ describe('Add Leave Entitlement Page Tests', () => {
 
     });
     it('should generate report by period', () => {
-        myLeaveEntitlementReport.selectLeavePeriod('2024-01-01 - 2024-31-12');
+        myLeaveEntitlementReport.selectLeavePeriod('2020-01-01 - 2020-31-12');
         myLeaveEntitlementReport.clickGenerate();
         cy.contains('Records Found').should('be.visible');
 
