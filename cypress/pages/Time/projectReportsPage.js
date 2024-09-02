@@ -1,10 +1,6 @@
 class ProjectReportPage {
-    enterEmployeeName(employeeName) {
-        cy.get('input[placeholder="Type for hints..."]').eq(0).clear().type(employeeName);
-        cy.contains('.oxd-autocomplete-option', employeeName).click();
-    }
     enterProjectName(projectName) {
-        cy.get('input[placeholder="Type for hints..."]').eq(1).clear().type(projectName);
+        cy.get('input[placeholder="Type for hints..."]').clear().type(projectName);
         cy.contains('.oxd-autocomplete-option', projectName).click();
     }
 
