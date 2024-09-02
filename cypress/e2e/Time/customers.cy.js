@@ -5,6 +5,8 @@ import loginData from '../../fixtures/loginData.json';
 describe('Customers Page Tests', () => {
     let customerName = `Test Customer ${Math.floor(Math.random() * 10000)}`;
     let customerDescription = 'This is a test description.';
+    let newCustomerName = `Edited Customer ${Math.floor(Math.random() * 10000)}`;
+    let newCustomerDescription = 'This is an edited description.';
     
     beforeEach(() => {
         cy.session('login', () => {
@@ -13,7 +15,7 @@ describe('Customers Page Tests', () => {
             loginPage.enterPassword(loginData.validUser.password);
             loginPage.clickSignIn();
         });
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewCustomers');
+        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/time/viewCustomers');
     });
 
     it('should add a new customer', () => {
@@ -22,17 +24,12 @@ describe('Customers Page Tests', () => {
     });
 
     it('should edit an existing customer', () => {
-        let newCustomerName = `Edited Customer ${Math.floor(Math.random() * 10000)}`;
-        let newCustomerDescription = 'This is an edited description.';
-        
-        customersPage.addCustomer(customerName, customerDescription); 
         customersPage.editCustomer(customerName, newCustomerName, newCustomerDescription);
         customersPage.verifyCustomerExists(newCustomerName);
     });
 
     it('should delete an existing customer', () => {
-        customersPage.addCustomer(customerName, customerDescription); 
-        customersPage.deleteCustomer(customerName);
-        customersPage.verifyCustomerDoesNotExist(customerName);
+        customersPage.deleteCustomer(newCustomerName);
+        customersPage.verifyCustomerDoesNotExist(newCustomerName);
     });
 });
