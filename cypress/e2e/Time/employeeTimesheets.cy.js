@@ -18,8 +18,11 @@ describe('Select Employee Page Tests', () => {
         .then((response) => {
           const users = response.body.data;
           validUser = users[0];
-          employeeName= validUser.employee.firstName+" "+ validUser.employee.middleName+" "+ validUser.employee.lastName ;
-          cy.log(employeeName);
+          
+          employeeName = validUser.employee.middleName && validUser.employee.middleName.trim() !== "" 
+          ? `${validUser.employee.firstName} ${validUser.employee.middleName} ${validUser.employee.lastName}`.trim()
+          : `${validUser.employee.firstName} ${validUser.employee.lastName}`.trim();
+
         
     });
     cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/time/projects?limit=50&offset=0&sortField=project.name&sortOrder=ASC&model=detailed')
