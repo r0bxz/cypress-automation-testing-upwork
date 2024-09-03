@@ -36,12 +36,12 @@ class CandidatesPage {
     }
 
     verifyCandidateExists(candidate) {
-        cy.contains('.oxd-table-row', `${candidate.firstName} ${candidate.lastName}`).should('exist');
+        cy.contains('.oxd-table-row', `${candidate.firstName} ${candidate.middleName} ${candidate.lastName}`).should('exist');
     }
 
 
     deleteCandidate(candidate) {
-        cy.contains('.oxd-table-row', `${candidate.firstName} ${candidate.lastName}`).within(() => {
+        cy.contains('.oxd-table-row', `${candidate.firstName} ${candidate.middleName} ${candidate.lastName}`).within(() => {
             cy.get('button').eq(1).click();
         });
         cy.contains('button', 'Yes, Delete').click();
