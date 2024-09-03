@@ -3,7 +3,11 @@ import loginPage from '../../pages/Login/loginPage';
 import loginData from '../../fixtures/loginData.json';
 
 describe('Attendance Records Page Tests', () => {
-    const punchInDate = '2024-02-09';
+    const today = new Date();
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, '0'); 
+const day = String(today.getDate()).padStart(2, '0'); 
+const punchInDate = `${year}-${day}-${month}`;
     const punchInTime = '08:30 AM';
     const punchInNote = 'Just a test In';
 
@@ -17,7 +21,7 @@ describe('Attendance Records Page Tests', () => {
             loginPage.enterPassword(loginData.validUser.password);
             loginPage.clickSignIn();
         });
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchOut');
+        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchIn');
     });
 
     it('should punch in and punch out successfully', () => {
@@ -29,7 +33,9 @@ describe('Attendance Records Page Tests', () => {
         attendanceRecordsPage.clickPunchIn();
 
         cy.contains('Success').should('be.visible');
-        cy.wait(2000);
+
+        cy.url().should('include', '/punchOut');
+        cy.get('h6').eq(1).click();
         attendanceRecordsPage.enterPunchOutTime(punchOutTime);
         attendanceRecordsPage.enterPunchOutNote(punchOutNote);
         attendanceRecordsPage.clickPunchOut();
