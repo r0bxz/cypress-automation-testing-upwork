@@ -17,7 +17,7 @@ describe('Select Employee Page Tests', () => {
         cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC')
         .then((response) => {
           const users = response.body.data;
-          validUser = users[1];
+          validUser = users[0];
           
           employeeName = validUser.employee.middleName && validUser.employee.middleName.trim() !== "" 
           ? `${validUser.employee.firstName} ${validUser.employee.middleName} ${validUser.employee.lastName}`
