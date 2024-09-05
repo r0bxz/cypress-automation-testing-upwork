@@ -100,6 +100,15 @@ class EmployeeInformationPage {
           });
         
         cy.get('.oxd-input').eq(1).type('edited')
+        cy.get('.orangehrm-tabs-item').contains('Report-to').click();
+        cy.get('.oxd-button').eq(0).click();
+        cy.get('.oxd-autocomplete-text-input').type('a'); 
+        cy.wait(1000)
+        cy.get('.oxd-autocomplete-dropdown').first().click() 
+        cy.get('.oxd-select-text').click();
+        cy.contains('.oxd-select-option','Direct').click();
+        cy.contains('button','Save').click();
+
     }
   
     deleteEmployee(employee) {
