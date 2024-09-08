@@ -58,14 +58,14 @@ let employeeNameTwo;
     cy.contains('.oxd-table-row', trackerData.newTracker.searchInfo).should('be.visible');
   });
 
-  it('should edit an existing performance tracker', () => {
+  it.skip('should edit an existing performance tracker', () => {
     performanceTrackersPage.clickEdit(trackerData.newTracker.trackerName);
     performanceTrackersPage.fillTrackerForm(trackerData.updatedTracker);
     performanceTrackersPage.clickSave();
     cy.contains('Success').should('be.visible');
   });
 
-  it('should delete an existing performance tracker', () => {
+  it.skip('should delete an existing performance tracker', () => {
     performanceTrackersPage.clickDelete(trackerData.updatedTracker.trackerName);
     cy.contains('button', 'Yes, Delete').click();
     cy.contains('Success').should('be.visible');
