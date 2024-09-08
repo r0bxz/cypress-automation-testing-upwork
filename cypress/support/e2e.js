@@ -15,6 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import { slowCypressDown } from 'cypress-slow-down'
+slowCypressDown()
 require('cypress-xpath');
 Cypress.on('uncaught:exception', (err, runnable) => {
     // Ignore specific errors
@@ -24,6 +26,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     }
     // returning true allows Cypress to fail the test
     return true;
+
+    // cypress/e2e/spec.cy.js
+// https://github.com/bahmutov/cypress-slow-down
+
+// slow down each command by the default amount
+// which is 1 second
+
   });
   
 
