@@ -12,7 +12,13 @@
     
       "directory": {
         "employeeName": ""
-      }
+      },
+      
+        "purge": {
+          "employeeName": ""
+        }
+      
+      
     
     
   }
