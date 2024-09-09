@@ -35,4 +35,6 @@ Cypress.Commands.add('login', (username, password) => {
       
     });
   });
+  require('cypress-downloadfile/lib/downloadFileCommand');
+
   
