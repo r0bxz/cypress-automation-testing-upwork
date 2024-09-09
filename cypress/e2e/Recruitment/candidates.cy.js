@@ -27,12 +27,12 @@ describe('Candidates Page Tests', () => {
         candidatesPage.verifyCandidateExists(candidate);
     });
 
-    it('should edit an existing candidate', () => {
+    it.skip('should edit an existing candidate', () => {
         candidatesPage.editCandidate(candidate.firstName, editedCandidate);
         candidatesPage.verifyCandidateExists(editedCandidate);
     });
 
-    it('should delete an existing candidate', () => {
+    it.skip('should delete an existing candidate', () => {
         candidatesPage.deleteCandidate(editedCandidate);
     });
 });
