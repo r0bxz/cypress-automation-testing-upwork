@@ -1,5 +1,5 @@
-import loginData from '../fixtures/loginData.json';
-import loginPage from '../pages/loginPage';
+import loginData from '../../fixtures/loginData.json';
+import loginPage from '../../pages/Login/loginPage';
 
 describe('Login Page Tests', () => {
   beforeEach(() => {
