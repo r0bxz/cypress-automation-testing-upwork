@@ -1,22 +1,9 @@
 import loginPage from '../../pages/Login/loginPage';
 import loginData from '../../fixtures/loginData.json';
 import systemUsersPage from '../../pages/Admin/systemUsersPage';
-import systemUsers from '../../fixtures/systemUsers.json';
 
 describe('Dashboard Page Tests', () => {
   let validUser;
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-          loginPage.enterUsername(loginData.validUser.username);
-          loginPage.enterPassword(loginData.validUser.password);
-          loginPage.clickSignIn();
-
-    cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC')
-      .then((response) => {
-        const users = response.body.data;
-        validUser = users.find(user => user.status && !user.deleted);
-      });
-});
     beforeEach(() => {
         cy.session('login', () => {
           cy.visit('https://opensource-demo.orangehrmlive.com/');
@@ -25,6 +12,11 @@ describe('Dashboard Page Tests', () => {
           loginPage.clickSignIn();
           cy.url().should('include', '/dashboard/index');
         });
+        cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC')
+      .then((response) => {
+        const users = response.body.data;
+        validUser = users.find(user => user.status && !user.deleted);
+      });
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers');
       });
 

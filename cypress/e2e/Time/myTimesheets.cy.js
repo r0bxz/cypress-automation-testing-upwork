@@ -23,7 +23,6 @@ describe('Select Employee Page Tests', () => {
 
     it('should  view and edit my timesheet', () => {
         const activity = 'Bug Fixes'
-        
         employeeTimesheets.editTimesheet(projectName,activity)
         cy.contains('Success').should('be.visible');
     });

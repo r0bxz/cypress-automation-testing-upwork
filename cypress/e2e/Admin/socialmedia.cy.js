@@ -4,7 +4,6 @@ import loginData from '../../fixtures/loginData.json';
 
 describe('Provider List Page Tests', () => {
 
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');

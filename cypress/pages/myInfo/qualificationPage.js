@@ -56,7 +56,7 @@ class QualificationsPage {
         cy.get('.oxd-select-text').eq(0).click();
         cy.contains('.oxd-select-option', details.language).click();
         cy.get('.oxd-select-text').eq(1).click();
-        cy.contains('.oxd-select-option', details.fluency).click();
+        cy.get('.oxd-select-option').eq(1).click();
         cy.get('.oxd-select-text').eq(2).click();
         cy.contains('.oxd-select-option', details.competency).click();
         cy.get('.oxd-textarea').clear().type(details.comments);

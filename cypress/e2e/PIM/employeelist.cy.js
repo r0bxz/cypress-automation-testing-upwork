@@ -5,19 +5,6 @@ import employeeInformationPage from '../../pages/PIM/employeeListPage';
 describe('Employee Information Page Tests', () => {
   let validEmployee;
 
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-
-    cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees?limit=50&offset=0&model=detailed&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC')
-      .then((response) => {
-        const employees = response.body.data;
-        validEmployee = employees[1];
-      });
-  });
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/');
@@ -26,6 +13,11 @@ describe('Employee Information Page Tests', () => {
       loginPage.clickSignIn();
       cy.url().should('include', '/dashboard/index');
     });
+    cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/pim/employees?limit=50&offset=0&model=detailed&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC')
+      .then((response) => {
+        const employees = response.body.data;
+        validEmployee = employees[1];
+      });
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList');
   });
 

@@ -6,13 +6,6 @@ describe('Licenses Page Tests', () => {
   const newLicenseName = `License ${Math.floor(Math.random() * 1000)}`;
   const editedLicenseName = `Edited License ${Math.floor(Math.random() * 1000)}`;
 
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-  });
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/');

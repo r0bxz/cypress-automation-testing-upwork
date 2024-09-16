@@ -4,15 +4,8 @@ import locationsPage from '../../pages/Admin/locationsPage';
 
 describe('Locations Page Search Functionality', () => {
     let randomLocationNamE ;
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-
     const randomNum = Math.floor(Math.random() * 10000);
     randomLocationNamE= `Location ${randomNum}`;
-  });
 
   beforeEach(() => {
     cy.session('login', () => {

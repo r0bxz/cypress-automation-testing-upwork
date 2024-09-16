@@ -3,13 +3,6 @@ import loginData from '../../fixtures/loginData.json';
 import generalInformationPage from '../../pages/Admin/generalInformationPage';
 
 describe('General Information Page Tests', () => {
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-  });
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/');

@@ -22,7 +22,7 @@ class employeeTimesheets {
                 } else {
                     cy.log('Message element not found, proceeding with Edit.');
                     cy.contains('button', 'Edit').click();
-                    cy.get('i.oxd-icon.bi-trash').click();
+                    cy.get('i.oxd-icon.bi-trash').eq(0).click();
                     cy.get('input[placeholder="Type for hints..."]').clear({ force: true }).type(projectName);
                     cy.contains('.oxd-autocomplete-option', projectName).click();
                     cy.get('.oxd-select-text-input').click();

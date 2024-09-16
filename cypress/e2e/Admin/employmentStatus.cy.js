@@ -8,14 +8,6 @@ describe('Employment Status Page Tests', () => {
   const randomNum = Math.floor(Math.random() * 10000);
   randomStatusName = `Status ${randomNum}`;
   anotherRandomStatusName = `Status ${randomNum+1}`;
- 
-
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-  });
 
   beforeEach(() => {
     cy.session('login', () => {

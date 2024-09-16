@@ -9,19 +9,6 @@ describe('Job Titles Page Tests', () => {
   let number = Math.floor(Math.random() * 100);
   let jobTitle = `Job title ${number}`;
   let editedJobTitle=`Edited title${number}`; 
-  
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-
-    cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/job-titles?limit=50&offset=0&sortField=jt.jobTitleName&sortOrder=ASC')
-      .then((response) => {
-        const jobTitles = response.body.data;
-        validJobTitle=jobTitles[0];
-      });
-  });
 
   beforeEach(() => {
     cy.session('login', () => {
@@ -30,6 +17,11 @@ describe('Job Titles Page Tests', () => {
       loginPage.enterPassword(loginData.validUser.password);
       loginPage.clickSignIn();
     });
+    cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/job-titles?limit=50&offset=0&sortField=jt.jobTitleName&sortOrder=ASC')
+      .then((response) => {
+        const jobTitles = response.body.data;
+        validJobTitle=jobTitles[0];
+      });
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewJobTitleList');
   });
 

@@ -2,7 +2,7 @@ class MyLeaveListPage {
     
     selectFromDate(fromDate) {
         if (fromDate) {
-            cy.get('.oxd-input').eq(1).clear().type(fromDate);
+            cy.get('.oxd-input').eq(1).clear({force:true}).type(fromDate);
         }
     }
 

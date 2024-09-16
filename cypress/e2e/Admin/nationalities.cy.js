@@ -6,13 +6,6 @@ describe('Nationalities Page Tests', () => {
   const newNationalityName = `Nationality ${Math.floor(Math.random() * 1000)}`;
   const editedNationalityName = `Edited Nationality ${Math.floor(Math.random() * 1000)}`;
 
-  before(() => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    loginPage.enterUsername(loginData.validUser.username);
-    loginPage.enterPassword(loginData.validUser.password);
-    loginPage.clickSignIn();
-  });
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');

@@ -1,9 +1,9 @@
 class VacanciesPage {
-    addVacancy(vacancy) {
+    addVacancy(vacancy,jobTitle) {
         cy.contains('button', 'Add').click();
         cy.get('.oxd-input').eq(1).clear().type(vacancy.vacancyName);
         cy.get('.oxd-select-text').eq(0).click();
-        cy.contains('.oxd-select-option', vacancy.jobTitle).click();
+        cy.contains('.oxd-select-option',jobTitle).click();
         cy.get('textarea').clear().type(vacancy.description);
         cy.get('input[placeholder="Type for hints..."]').clear().type('a')
         cy.get('.oxd-autocomplete-option').eq(1).click();
@@ -13,13 +13,13 @@ class VacanciesPage {
         
     }
 
-    editVacancy(originalName, editedVacancy) {
+    editVacancy(originalName, editedVacancy,jobTitle) {
         cy.contains('.oxd-table-row', originalName).within(() => {
             cy.get('button').eq(1).click(); 
         });
         cy.get('.oxd-input').eq(1).clear().type(editedVacancy.vacancyName);
         cy.get('.oxd-select-text').eq(0).click();
-        cy.contains('.oxd-select-option', editedVacancy.jobTitle).click();
+        cy.contains('.oxd-select-option',jobTitle).click();
         cy.get('textarea').clear().type(editedVacancy.description);
         cy.get('input[placeholder="Type for hints..."]').clear().type('b')
         cy.get('.oxd-autocomplete-option').eq(1).click();

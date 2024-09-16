@@ -28,9 +28,7 @@ describe('Event Management Tests', () => {
         cy.contains('button','Add').click();
         eventsPage.fillEventName(newEventData.eventName);
         eventsPage.fillDescription(newEventData.description);
-        //eventsPage.toggleActiveStatus(newEventData.isActive);
         eventsPage.clickSave();
-        
         cy.contains('Success').should('be.visible');
 
     });

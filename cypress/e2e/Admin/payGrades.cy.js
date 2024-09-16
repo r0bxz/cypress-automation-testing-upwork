@@ -8,20 +8,6 @@ describe('Pay Grades Page Tests', () => {
   let validGrade;
   const randomNum = Math.floor(Math.random() * 10000);
   randomGradeName = `Grade ${randomNum}`;
-
-  before(() => {
-        cy.visit('https://opensource-demo.orangehrmlive.com/');
-        loginPage.enterUsername(loginData.validUser.username);
-        loginPage.enterPassword(loginData.validUser.password);
-        loginPage.clickSignIn();
-      cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/pay-grades?limit=50&offset=0')
-        .then((response) => {
-          const grades = response.body.data;
-          validGrade = grades[0];
-        });
-        
-  });
-
   beforeEach(() => {
     cy.session('login', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/');
@@ -29,6 +15,11 @@ describe('Pay Grades Page Tests', () => {
       loginPage.enterPassword(loginData.validUser.password);
       loginPage.clickSignIn();
     });
+    cy.request('GET', 'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/admin/pay-grades?limit=50&offset=0')
+        .then((response) => {
+          const grades = response.body.data;
+          validGrade = grades[0];
+        });
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewPayGrades');
   });
 

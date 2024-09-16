@@ -27,6 +27,6 @@ describe('Email Subscriptions Page Tests', () => {
     emailSubscriptionsPage.enterSubscriberEmail(email);
     emailSubscriptionsPage.clickSave();
     cy.contains('John Doe').should('exist');
-    cy.contains('john.doe@example.com').should('exist');
+    cy.contains('.oxd-table-row',email).should('be.visible');
   });
 });

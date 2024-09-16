@@ -29,7 +29,6 @@ describe('Leave Application and Verification Tests', () => {
         ApplyLeavePage.selectStartDay(startDay);
         ApplyLeavePage.enterComments(comment);
         ApplyLeavePage.clickApply();
-
         cy.contains('Success').should('be.visible');
     });
 

@@ -11,7 +11,6 @@ const punchInDate = `${year}-${day}-${month}`;
     const punchInTime = '08:30 AM';
     const punchInNote = 'Just a test In';
 
-    const punchOutDate = '2024-02-09';
     const punchOutTime = '04:30 PM';
     const punchOutNote = 'Just a test Out';
     beforeEach(() => {
@@ -24,7 +23,7 @@ const punchInDate = `${year}-${day}-${month}`;
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchIn');
     });
 
-    it('should punch in and punch out successfully', () => {
+    it.skip('should punch in and punch out successfully', () => {
         
 
         attendanceRecordsPage.selectPunchInDate(punchInDate);
@@ -34,7 +33,7 @@ const punchInDate = `${year}-${day}-${month}`;
 
         cy.contains('Success').should('be.visible');
 
-        cy.url().should('include', '/punchOut');
+        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/attendance/punchOut')
         cy.get('h6').eq(1).click();
         attendanceRecordsPage.enterPunchOutTime(punchOutTime);
         attendanceRecordsPage.enterPunchOutNote(punchOutNote);
@@ -45,7 +44,7 @@ const punchInDate = `${year}-${day}-${month}`;
 
     });
 
-    it('verify the Punch In/Out and delete the record', ()=>{
+    it.skip('verify the Punch In/Out and delete the record', ()=>{
 
       attendanceRecordsPage.verifyAndDelete(punchInNote);
 

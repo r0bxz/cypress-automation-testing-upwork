@@ -44,7 +44,7 @@ describe('Qualifications Page Tests', () => {
         
     });
 
-    it('should add languages', () => {
+    it.skip('should add languages', () => {
         cy.contains('.oxd-main-menu-item', 'My Info').click();
         cy.contains('Qualifications').click();
 

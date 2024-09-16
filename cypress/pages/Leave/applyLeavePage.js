@@ -1,7 +1,7 @@
 class ApplyLeavePage {
     selectLeaveType(type) {
-        cy.get('.oxd-select-text-input').eq(0).click();
-        cy.contains('.oxd-select-dropdown', type).click();
+        cy.get('.oxd-select-text-input').eq(0).click({force:true});
+        cy.contains('.oxd-select-option', type).click({force:true});
     }
 
     enterFromDate(date) {
