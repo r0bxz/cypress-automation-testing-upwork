@@ -12,9 +12,8 @@ class DashboardPage {
     get pendingSelfReviewSection() {return cy.get('div.orangehrm-todo-list-item').contains('Pending Self Review'); }
     get candidateToInterviewSection() {return cy.get('div.orangehrm-todo-list-item').contains('Candidate to Interview'); }
     get employeesOnLeaveConfigButton () {return cy.get('i.oxd-icon.bi-gear-fill.orangehrm-leave-card-icon')}
-    get assignLeaveButton(){return cy.get('div.oxd-layout-context > div > div:nth-child(3) > div > div.orangehrm-dashboard-widget-body > div > div:nth-child(1)')}
     get userDropDownMenu(){return cy.get('.oxd-userdropdown-tab') }
-
+    
     clickUpgrade() { this.upgradeButton.click(); }
     checkTimeAtWork() { this.timeAtWork.should('be.visible'); }
     checkMyActions() { this.myActions.should('be.visible'); }
