@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 // Cypress command to handle login via session
+import 'cypress-file-upload';
+
 Cypress.Commands.add('login', (username, password) => {
     cy.session([username, password], () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/');
