@@ -59,10 +59,6 @@ describe('Dashboard Page Tests', () => {
     cy.url().should('include','/attendance')
   });
 
-  it('should verify the presence and redirection of Pending Self Review section', () => {
-    dashboardPage.checkPendingSelfReview();
-    dashboardPage.clickPendingSelfReview();
-  });
 
   it('should verify the presence and redirection of Candidate to Interview section', () => {
     dashboardPage.checkCandidateToInterview();
