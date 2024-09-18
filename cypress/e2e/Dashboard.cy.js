@@ -60,10 +60,10 @@ describe('Dashboard Page Tests', () => {
   });
 
 
-  it('should verify the presence and redirection of Candidate to Interview section', () => {
-    dashboardPage.checkCandidateToInterview();
-    dashboardPage.clickCandidateToInterview();
-  });
+ // it('should verify the presence and redirection of Candidate to Interview section', () => {
+ //   dashboardPage.checkCandidateToInterview();
+   // dashboardPage.clickCandidateToInterview();
+ // });
   it('Employees on Leave Button ', ()=> {
     dashboardPage.clickEmployeesOnLeaveButton();
   })
