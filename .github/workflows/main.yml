@@ -26,4 +26,9 @@ jobs:
           runTests: false  # Only install Cypress, don't run tests yet
 
       - name: Run Cypress Tests on ${{ matrix.browser }} - ${{ matrix.partition }}
-        run: npx cypress run --browser ${{ matrix.browser }} --headless --spec "cypress/e2e/${{ matrix.partition }}/*.cy.js"
+        run: |
+          if [ ${{ matrix.partition }} == "Dashboard" ]; then
+            npx cypress run --browser ${{ matrix.browser }} --headless --spec "cypress/e2e/Dashboard/*.cy.js"
+          elif [ ${{ matrix.partition }} == "Login" ]; then
+            npx cypress run --browser ${{ matrix.browser }} --headless --spec "cypress/e2e/Login/*.cy.js"
+          fi
