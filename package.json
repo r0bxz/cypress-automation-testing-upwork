@@ -1,7 +1,7 @@
 {
     "scripts": {
       "cypress:chrome": "cypress run --browser chrome",
-      "cypress:edge": "cypress run --browser edge"
+      "cypress:electron": "cypress run --browser electron"
     },
   "dependencies": {
     "cypress": "^13.13.3",
