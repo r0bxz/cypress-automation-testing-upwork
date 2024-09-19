@@ -1,49 +1,45 @@
 name: Cypress Test
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "0 2 * * 1-5"
   workflow_dispatch:
 
 jobs:
   prepare:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.prepare.outputs.matrix }}
     steps:
-      - name: Create matrix ⊹
+      - name: Create matrix for splitting tests
         id: prepare
         uses: bahmutov/gh-build-matrix@main
         with:
           n: 3  # Number of parallel containers
 
-      - name: Print result 🖨
+      - name: Print matrix output
         run: echo '${{ steps.prepare.outputs.matrix }}'
 
-  test-split:
+  cypress-run:
     needs: prepare
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Print GitHub variables 🖨
-        run: npx @bahmutov/print-env GITHUB
-
-      - name: Print GitHub strategy context 🖨
-        run: echo '${{ toJSON(strategy) }}'
-
-      - name: Run split Cypress tests 🧪
-        uses: cypress-io/github-action@v5
+      - name: Cypress.io Install
+        uses: cypress-io/github-action@v4
         with:
-          start: npm start  # Optional, if you need to start a server
+          runTests: false  # Only install Cypress, don't run tests yet
+
+      - name: Run Cypress tests with split
+        run: npx cypress run --browser ${{ matrix.browser }} --headless --env split=true
         env:
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
