@@ -8,9 +8,17 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
         
       - name: Cypress.io
         uses: cypress-io/github-action@v4
+      - name: Cypress run on ${{ matrix.browser }}
+        uses: cypress-io/github-action@v4
+        with:
+          browser: ${{ matrix.browser }}  
+          headless: true
