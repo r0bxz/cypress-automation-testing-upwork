@@ -9,16 +9,22 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false  # Continue running tests on other containers if one fails
       matrix:
-        browser: [chrome, edge]
+        browser: [chrome, edge]  # Run tests in parallel on Chrome and Edge
+        containers: [1, 2]       # Run two parallel instances per browser
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
-        
-      - name: Cypress.io
+
+      - name: Cypress.io Install
         uses: cypress-io/github-action@v4
+        with:
+          runTests: false  # Only install Cypress, don't run tests yet
+
       - name: Cypress run on ${{ matrix.browser }}
         uses: cypress-io/github-action@v4
         with:
-          browser: ${{ matrix.browser }}  
+          browser: ${{ matrix.browser }}
           headless: true
+          parallel: true   # Enables parallel execution
