@@ -9,10 +9,10 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false  # Continue running tests if one job fails
+      fail-fast: false
       matrix:
-        browser: [chrome, edge]  # Run tests in parallel across browsers
-        partition: [1, 2]  # Split tests across two partitions
+        browser: [chrome, edge]
+        partition: [1, 2]
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
@@ -26,4 +26,9 @@ jobs:
           runTests: false  # Only install Cypress, don't run tests yet
 
       - name: Run Cypress Tests on ${{ matrix.browser }} - Partition ${{ matrix.partition }}
-        run: npx cypress run --browser ${{ matrix.browser }} --headless --spec "cypress/e2e/**/*-part${{ matrix.partition }}.cy.js"
+        run: |
+          if [ ${{ matrix.partition }} == 1 ]; then
+            npx cypress run --browser ${{ matrix.browser }} --headless --spec "cypress/e2e/login.cy.js,cypress/e2e/Dashboard/**.cy.js"
+          else
+            npx cypress run --browser ${{ matrix.browser }} --headless --spec "cypress/e2e/settings.cy.js,cypress/e2e/Login/**.cy.js"
+          fi
