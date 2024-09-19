@@ -1,4 +1,8 @@
 {
+    "scripts": {
+      "cypress:chrome": "cypress run --browser chrome",
+      "cypress:edge": "cypress run --browser edge"
+    },
   "dependencies": {
     "cypress": "^13.13.3",
     "cypress-xpath": "^2.0.1"
