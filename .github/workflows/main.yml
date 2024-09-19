@@ -17,6 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.7
 
+      - name: List Files for Debugging
+        run: ls -R cypress/e2e
+
       - name: Install Dependencies
         run: npm install
 
