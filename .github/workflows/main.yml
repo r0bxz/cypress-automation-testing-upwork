@@ -6,40 +6,23 @@ on:
   workflow_dispatch:
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.prepare.outputs.matrix }}
-    steps:
-      - name: Create matrix for splitting tests
-        id: prepare
-        uses: bahmutov/gh-build-matrix@main
-        with:
-          n: 3  # Number of parallel containers
-
-      - name: Print matrix output
-        run: echo '${{ steps.prepare.outputs.matrix }}'
-
   cypress-run:
-    needs: prepare
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+      fail-fast: false  # Continue running tests on other containers if one fails
+      matrix:
+        browser: [chrome, edge]  # Run tests in parallel on Chrome and Edge
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Install Cypress
+      - name: Cypress.io Install
         uses: cypress-io/github-action@v4
         with:
           runTests: false  # Only install Cypress, don't run tests yet
 
-      - name: Run Cypress tests with split
-        run: npx cypress run --headless --env split=true
-        env:
-          SPLIT: ${{ strategy.job-total }}
-          SPLIT_INDEX: ${{ strategy.job-index }}
+      - name: Cypress run on ${{ matrix.browser }}
+        uses: cypress-io/github-action@v4
+        with:
+          browser: ${{ matrix.browser }}
+          headless: true
