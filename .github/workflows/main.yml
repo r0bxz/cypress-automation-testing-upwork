@@ -12,7 +12,6 @@ jobs:
       fail-fast: false  # Continue running tests on other containers if one fails
       matrix:
         browser: [chrome, edge]  # Run tests in parallel on Chrome and Edge
-        containers: [1, 2]       # Run two parallel instances per browser
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
@@ -27,4 +26,3 @@ jobs:
         with:
           browser: ${{ matrix.browser }}
           headless: true
-          parallel: true   # Enables parallel execution
