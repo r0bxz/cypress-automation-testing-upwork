@@ -33,13 +33,13 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Cypress.io Install
+      - name: Install Cypress
         uses: cypress-io/github-action@v4
         with:
           runTests: false  # Only install Cypress, don't run tests yet
 
       - name: Run Cypress tests with split
-        run: npx cypress run --browser ${{ matrix.browser }} --headless --env split=true
+        run: npx cypress run --headless --env split=true
         env:
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
